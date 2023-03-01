@@ -86,7 +86,7 @@ def main():
            print (f"{i} = {item}")
            i +=1
    
-       print(f"\nThe forth character is the CPU type")
+       print(f"\nThe fourth character is the CPU type")
        print(f"---------------------------------------------")
        for key in char4.keys():
            print (f"{key} = {char4[key]}")
