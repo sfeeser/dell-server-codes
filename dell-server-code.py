@@ -62,7 +62,7 @@ def main():
     # code = "wxq3" would NOT match
     # Could we write a better pattern, YOU BET! Go for it.
     pattern = re.compile(r"""
-                             (?P<c1>[a-zA_Z]+)
+                             (?P<c1>^[a-zA_Z][a-zA_Z]?)
                              (?P<c2>\d)
                              (?P<c3>\d)
                              (?P<c4>\d)
