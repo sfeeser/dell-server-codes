@@ -80,7 +80,6 @@ def main():
        # FIRST ERROR HANDLING OUTPUT STARTS HERE
        print(f"The first character is the chassis type")
        print(f"---------------------------------------------")
-       # Use the ".keys" method to lookup the key of each dictionary item
        for key in chassis_dict:
            print (f"{key} = {chassis_dict[key]}")
 
@@ -102,7 +101,6 @@ def main():
 
        print(f"\nThe fourth character is the CPU type")
        print(f"---------------------------------------------")
-       # Use the ".keys" method to lookup the key of each dictionary item
        for key in proc_dict:
            print (f"{key} = {proc_dict[key]}")
        print(f"---------------------------------------------\n")
