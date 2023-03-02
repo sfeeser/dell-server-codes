@@ -7,7 +7,7 @@ import os
 def main():
 
     # This is a dictionary:
-    char1 = {
+    chassis_dict = {
               "C": "Compute optimized hyper-scale server",
               "F": "Rack-based sleds for FX2/FX2s enclosure",
               "M": "Modular Blade server",
@@ -18,7 +18,7 @@ def main():
             }
 
     # This is a list:
-    char2 = [
+    socket_list = [
              "NA",
              "1 Socket",
              "1 Socket",
@@ -30,9 +30,9 @@ def main():
              "2 or 4 sockets",
              "4 Sockets"
             ]
- 
+
     # This is a list
-    char3 = [
+    gen_list = [
              "Gen 10",
              "Gen 11",
              "Gen 12",
@@ -46,10 +46,10 @@ def main():
             ]
 
     # This is a dictionary
-    char4 = {
+    proc_dict = {
             "0": "Intel",
             "5": "AMD"
-            }  
+            }
 
     os.system('clear')
     code = input("Enter a server code: ")
@@ -77,95 +77,93 @@ def main():
     # PARSING THE USER INPUT END #####################################################
     else:
        # If this runs, the user entered an invalid code, so output help info.
-       # FIRST ERROR HANDLING OUTPUT STARTS HERE 
+       # FIRST ERROR HANDLING OUTPUT STARTS HERE
        print(f"The first character is the chassis type")
        print(f"---------------------------------------------")
-       # Use the ".keys" method to lookup the key of each dictionary item 
-       for key in char1.keys():
-           print (f"{key} = {char1[key]}")
-   
+       for key in chassis_dict:
+           print (f"{key} = {chassis_dict[key]}")
+
        print(f"\nThe second character is the socket count")
        print(f"---------------------------------------------")
-       # Use the idex value (0-9) to reference each item in a list 
+       # Use the idex value (0-9) to reference each item in a list
        i=0
-       for item in char2:
+       for item in socket_list:
            print (f"{i} = {item}")
            i +=1
-   
+
        print(f"\nThe third character is the generation")
        print(f"---------------------------------------------")
        # Use the idex value (0-9) to reference each item in a list
        i=0
-       for item in char3:
+       for item in gen_list:
            print (f"{i} = {item}")
            i +=1
-   
+
        print(f"\nThe fourth character is the CPU type")
        print(f"---------------------------------------------")
-       # Use the ".keys" method to lookup the key of each dictionary item 
-       for key in char4.keys():
-           print (f"{key} = {char4[key]}")
+       for key in proc_dict:
+           print (f"{key} = {proc_dict[key]}")
        print(f"---------------------------------------------\n")
-       print(f"You entered \"{code}\" which is NOT a dell server code\n")
-       print("You must enter a valid code like r450 or mx345\n")
-       print("Reference the above and PLEASE TRY AGAIN\n")
+       print(f" You entered \"{code}\" which is NOT a dell server code\n")
+       print(" You must enter a valid code like r450 or mx345\n")
+       print(" Reference the above and PLEASE TRY AGAIN\n")
        # NOTE THE NEXT LINE = EXIT!       
        exit() # No use continuing. Exit the script.
        # FIRST ERROR HANDLING ENDS HERE
 
     # If we got this far, all four codes passed the regex test,
     # but additional validity testing is necessary
-    print(f"Looking up Dell {code1}{code2}{code3}{code4}") 
+    print(f"Looking up Dell {code1}{code2}{code3}{code4}:")
 
-    if code1 in char1:
+    if code1 in chassis_dict:
         # If code1 can be found in the code1 dictionary, it is valid, so print it.
-        print(f"  {code1} = {char1[code1]}")
+        print(f"  {code1} = {chassis_dict[code1]}")
     else:
         # Else the code was not found so start error handling
-        #c ode1 ERROR HANDLING STARTS
-        print(f"{code1} is an invalid, valid codes are:")
-        for key in char1.keys():
-            print (f"    {key} = {char1[key]}")
+        # code1 ERROR HANDLING STARTS
+        print(f" {code1} is invalid, valid codes are:")
+        for key in chassis_dict:
+            print (f"    {key} = {chassis_dict[key]}")
         #code1 ERROR HANDLING ENDS
 
     if 1 <= code2 <= 9:
         # If code2 is a single digit 1-9, it is valid, print it
-        print(f"  {code2} = {char2[code2]}")
+        print(f"  {code2} = {socket_list[code2]}")
     else:
         # Else it is not valid, so handle the error
         #code2 ERROR HANDLING STARTS
         print(f"  {code2} is invalid. Valid CPU socket codes are:")
         i=0
-        for item in char2:
+        for item in socket_list:
             print (f"    {i} = {item}")
             i +=1
         #code2 ERROR HANDLING ENDS    
 
     if 0 <= code3 <= 9:
        # If code3 is a single digit 0-9, it is valid, print it
-       print(f"  {code3} = {char3[code3]}")
+       print(f"  {code3} = {gen_list[code3]}")
     else:
-        # Hmmm, this should NEVER happen, but let's write a defensive 
+        # Hmmm, this should NEVER happen, but let's write a defensive
         # error handler in spite of that.
         #code3 ERROR HANDLING STARTS
-        print(f"error: {code3} Must be 0 to 9")
+        print(f" error: {code3} Must be 0 to 9")
         i=0
-        for item in char3:
-            print (f"{i} = {item}")
+        for item in gen_list:
+            print (f" {i} = {item}")
             i +=1
         #code3 ERROR HANDLING ENDS
 
-    if code4 in char4:
+    if code4 in proc_dict:
         # If code4 is found, print it
         # Wow, error handling with dictionaries seems easier!
-        print(f"  {code4} = {char4[code4]}")
+        print(f"  {code4} = {proc_dict[code4]}")
     else:
         # else the code was not found, so handle the error
         #code4 ERROR HANDLING STARTS
         print(f"  {code4} is invalid, here are valid options:")
-        for key in char4.keys():
-           print (f"     {key} = {char4[key]}")
+        for key in proc_dict:
+           print (f"     {key} = {proc_dict[key]}")
         #code4 ERROR HANDLING ENDS
-        
+
 if __name__ == "__main__":
-    main()
+    main()           
